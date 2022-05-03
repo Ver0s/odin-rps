@@ -3,9 +3,15 @@ function computerPlay() {
     return options[Math.floor(Math.random()*options.length)];
 }
 
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
+function getValidInput(text, acceptedInput) {  
+    let userInput = prompt(text).toLowerCase();
+    while (!(acceptedInput.includes(userInput))) {
+        userInput = prompt(`Input has to be either: ${acceptedInput}`).toLowerCase();   
+    }
+    return userInput;
+}
 
+function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         console.log('Draw');
         return 'draw';
@@ -32,7 +38,7 @@ function game(rounds) {
     let playerPoints = 0;
     let computerPoints = 0;
     for (let i = 0; i < rounds; i++) {
-        let playerSelection = prompt('What\'s your choice?');
+        let playerSelection = getValidInput('What\'s your choice?', ['rock','paper','scissors']);
         let computerSelection = computerPlay();
         let roundResult = playRound(playerSelection, computerSelection);
         if (roundResult === 'win') {
@@ -45,3 +51,8 @@ function game(rounds) {
 }
 
 game(3);
+
+//todo
+//accept only rock, paper and scissors strings -> function for that
+//better score management
+//maybe change console log to alert
