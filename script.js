@@ -13,24 +13,24 @@ function getValidInput(text, acceptedInput) {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        console.log('Draw');
+        alert('Draw');
         return 'draw';
     } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
-        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+        alert(`You win! ${playerSelection} beats ${computerSelection}`);
         return `win`;
     } else {
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        alert(`You lose! ${computerSelection} beats ${playerSelection}`);
         return `lose`;
     }
 }
 
 function decideWinner(playerPoints, computerPoints) {
     if (playerPoints > computerPoints) {
-        console.log('You win the match!');
+        alert(`You win the match! Your points: ${playerPoints} | Computer points: ${computerPoints}`);
     } else if (playerPoints < computerPoints) {
-        console.log('You lose the match!');
+        alert(`You lose the match! Your points: ${playerPoints} | Computer points: ${computerPoints}`);
     } else {
-        console.log('You draw the match!'); 
+        alert('You draw the match!'); 
     }
 }
 
@@ -53,6 +53,6 @@ function game(rounds) {
 game(3);
 
 //todo
-//accept only rock, paper and scissors strings -> function for that
+//accept only rock, paper and scissors strings -> function for that #done
 //better score management
-//maybe change console log to alert
+//maybe change console log to alert #done
