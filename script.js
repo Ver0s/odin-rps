@@ -50,9 +50,4 @@ function game(rounds) {
     decideWinner(playerPoints, computerPoints);
 }
 
-game(3);
-
-//todo
-//accept only rock, paper and scissors strings -> function for that #done
-//better score management
-//maybe change console log to alert #done
+game(5);
