@@ -1,3 +1,7 @@
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
+
 function computerPlay() {
     options = ['rock','paper','scissors'];
     return options[Math.floor(Math.random()*options.length)];
@@ -49,7 +53,3 @@ function game(rounds) {
     }
     decideWinner(playerPoints, computerPoints);
 }
-
-game(5);
-
-// git branching test
