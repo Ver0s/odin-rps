@@ -14,26 +14,26 @@ scissors.addEventListener('click', playRound);
 function playRound(e) {
     playerSelection = e.target.value;
     let computerSelection = computerPlay();
-    scoreTracker.textContent = `Your points: ${playerPoints} | Computer points: ${computerPoints}`;
+
+    if (playerSelection === computerSelection) {
+        scoreTracker.textContent = `Your points: ${playerPoints} | Computer points: ${computerPoints}`;
+        roundTracker.textContent = 'Draw';
+    } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
+        playerPoints++;
+        scoreTracker.textContent = `Your points: ${playerPoints} | Computer points: ${computerPoints}`;
+        roundTracker.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+    } else {
+        computerPoints++;
+        scoreTracker.textContent = `Your points: ${playerPoints} | Computer points: ${computerPoints}`;
+        roundTracker.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+    }
 
     if (computerPoints === 5 || playerPoints === 5) {
         decideWinner();
         let resetButton = document.createElement('button');
         resetButton.textContent = 'Reset Game';
-        resetButton.classList.add('reset');
         document.body.appendChild(resetButton);
         resetButton.addEventListener('click', reset);
-    }
-
-    if (playerSelection === computerSelection) {
-        roundTracker.textContent = 'Draw';
-        return
-    } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
-        roundTracker.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
-        return playerPoints++;
-    } else {
-        roundTracker.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
-        return computerPoints++;
     }
 }
 
