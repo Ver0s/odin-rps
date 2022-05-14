@@ -1,6 +1,25 @@
 const rock = document.getElementById('rock');
 const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
+const results = document.getElementById('results');
+
+rock.addEventListener('click', playRound);
+paper.addEventListener('click', playRound);
+scissors.addEventListener('click', playRound);
+
+function playRound(e, playerSelection, computerSelection) {
+    playerSelection = e.target.value;
+    if (playerSelection === computerSelection) {
+        console.log('Draw');
+        return 'draw';
+    } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
+        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+        return `win`;
+    } else {
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        return `lose`;
+    }
+}
 
 function computerPlay() {
     options = ['rock','paper','scissors'];
@@ -15,26 +34,13 @@ function getValidInput(text, acceptedInput) {
     return userInput;
 }
 
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        alert('Draw');
-        return 'draw';
-    } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
-        alert(`You win! ${playerSelection} beats ${computerSelection}`);
-        return `win`;
-    } else {
-        alert(`You lose! ${computerSelection} beats ${playerSelection}`);
-        return `lose`;
-    }
-}
-
 function decideWinner(playerPoints, computerPoints) {
     if (playerPoints > computerPoints) {
-        alert(`You win the match! Your points: ${playerPoints} | Computer points: ${computerPoints}`);
+        console.log(`You win the match! Your points: ${playerPoints} | Computer points: ${computerPoints}`);
     } else if (playerPoints < computerPoints) {
-        alert(`You lose the match! Your points: ${playerPoints} | Computer points: ${computerPoints}`);
+        console.log(`You lose the match! Your points: ${playerPoints} | Computer points: ${computerPoints}`);
     } else {
-        alert('You draw the match!'); 
+        console.log('You draw the match!'); 
     }
 }
 
